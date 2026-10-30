@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "resourcepack-optimizer-pro"
+version = "1.0.0"
+description = "High-speed Python tool for validating, minifying, compressing, and optimizing Minecraft Resourcepacks."
+readme = "README.md"
+authors = [{ name = "Antigravity Team" }]
+license = { text = "MIT" }
+keywords = ["minecraft", "resourcepack", "optimizer", "validator", "png", "deflate", "audio", "json"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Utilities",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "pillow>=9.0.0",
+    "rich>=12.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+]
+
+[project.scripts]
+resourcepack-optimizer = "resourcepack_optimizer.cli:main"
+rp-opt = "resourcepack_optimizer.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=resourcepack_optimizer --cov-report=term-missing --cov-report=xml"
+
+[tool.coverage.run]
+source = ["resourcepack_optimizer"]
+omit = ["tests/*"]
